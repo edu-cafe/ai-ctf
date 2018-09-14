@@ -46,8 +46,9 @@ with tf.Session() as sess:
     for step in range(10001):
         sess.run(train, feed_dict={X: x_data, Y: y_data})
         if step % 100 == 0:
-            print(step, sess.run(cost, feed_dict={
-                  X: x_data, Y: y_data}), sess.run([W1, W2]))
+            print('step_%d-> cost:%.3f' % (step, sess.run(cost, feed_dict={
+                  X: x_data, Y: y_data})))
+            print('step_%d->'%(step), 'W1:', sess.run(W1), 'W2:', sess.run(W2))
 
     # Accuracy report
     h, c, a = sess.run([hypothesis, predicted, accuracy],
